@@ -18,11 +18,13 @@ export function Newsletter() {
       <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
         <div className="space-y-8">
           <div className="space-y-4">
+            <div className="text-xs tracking-widest uppercase text-primary/60 font-medium">Лид-магнит</div>
             <h2 className="text-4xl md:text-5xl font-light tracking-tight text-balance">
-              Будьте <span className="font-semibold">в курсе</span>
+              Получите «Карту миров» —{" "}
+              <span className="font-semibold">бесплатно</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance leading-relaxed">
-              Подпишитесь на рассылку и получайте эксклюзивные предложения, гиды по направлениям и советы от экспертов
+              5 локаций, которые выглядят как компьютерная графика, но реальны — с секретными советами и координатами
             </p>
           </div>
 

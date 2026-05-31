@@ -1,49 +1,49 @@
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { MapPin, ArrowRight } from "lucide-react"
+import Icon from "@/components/ui/icon"
 
 const destinations = [
   {
-    name: "Санторини",
-    country: "Греция",
+    name: "Гроты Капри",
+    country: "Италия",
     image: "/santorini-sunset.png",
-    description: "Белоснежные домики и потрясающие закаты над морем",
-    price: "от 249 900 ₽",
+    description: "Малые гроты южного побережья с неоново-голубым свечением воды — не те, что в путеводителях",
+    secret: "Лучшее время — 11:00, когда солнце под идеальным углом",
   },
   {
-    name: "Бали",
-    country: "Индонезия",
+    name: "Бенг Мелеа",
+    country: "Камбоджа",
+    image: "/asian-temples-thailand-bangkok-golden-temple.jpg",
+    description: "Нереставрированный храм, поглощённый джунглями. Деревья прорастают сквозь камни — как Индиана Джонс",
+    secret: "Приезжайте на рассвете — туристов нет, атмосфера максимальная",
+  },
+  {
+    name: "Invisible House",
+    country: "Калифорния, США",
+    image: "/dubai-modern-skyline-luxury-desert.jpg",
+    description: "Дом-невидимка в пустыне Джошуа-Три: зеркальные стены сливаются с ландшафтом. Пик тихой роскоши",
+    secret: "Золотой час за 40 минут до заката — фото как с другой планеты",
+  },
+  {
+    name: "Озеро Хиллер",
+    country: "Австралия",
     image: "/bali-indonesia-rice-terraces-tropical-paradise.jpg",
-    description: "Тропический рай с древними храмами и пляжами",
-    price: "от 189 900 ₽",
+    description: "Ярко-розовое «зефирное» озеро: цвет не исчезает даже в стакане воды. Контраст с изумрудным лесом — визуальный шок",
+    secret: "Видно только с воздуха — аренда вертолёта обязательна",
   },
   {
-    name: "Киото",
-    country: "Япония",
-    image: "/kyoto-japan-traditional-temples-cherry-blossoms.jpg",
-    description: "Древние храмы и традиционная японская культура",
-    price: "от 279 900 ₽",
+    name: "Альпийские долины в тумане",
+    country: "Австрия / Швейцария",
+    image: "/iceland-northern-lights-waterfalls-dramatic-landsc.jpg",
+    description: "Скрытые деревушки, где утренний туман заполняет долину — видны лишь шпили церквей, парящие в небе",
+    secret: "5:40 утра — свет мягкий, туристы спят, деревня ваша",
   },
   {
-    name: "Мальдивы",
+    name: "Мальдивские атоллы",
     country: "Индийский океан",
     image: "/maldives-overwater-bungalows-crystal-clear-water.jpg",
-    description: "Виллы над водой и нетронутые коралловые рифы",
-    price: "от 349 900 ₽",
-  },
-  {
-    name: "Исландия",
-    country: "Северная Европа",
-    image: "/iceland-northern-lights-waterfalls-dramatic-landsc.jpg",
-    description: "Северное сияние и величественные вулканические ландшафты",
-    price: "от 299 900 ₽",
-  },
-  {
-    name: "Дубай",
-    country: "ОАЭ",
-    image: "/dubai-modern-skyline-luxury-desert.jpg",
-    description: "Современная роскошь и приключения в пустыне",
-    price: "от 229 900 ₽",
+    description: "Частные острова без массового туризма: нетронутые рифы и виллы над водой только для вас",
+    secret: "Выбирайте острова к северу от Мале — меньше людей, чище вода",
   },
 ]
 
@@ -53,11 +53,13 @@ export function FeaturedDestinations() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-20">
+          <div className="text-xs tracking-widest uppercase text-primary/60 mb-4 font-medium">Карта миров</div>
           <h2 className="text-5xl md:text-6xl font-light tracking-tight mb-6 text-balance">
-            Популярные <span className="font-semibold">направления</span>
+            5 локаций, которые выглядят как{" "}
+            <span className="font-semibold">компьютерная графика</span>
           </h2>
           <p className="text-lg text-muted-foreground text-balance leading-relaxed">
-            Лучшие направления с незабываемыми впечатлениями и захватывающей красотой
+            Места, о которых молчат путеводители — только для тех, кто ценит уникальность
           </p>
         </div>
 
@@ -79,7 +81,7 @@ export function FeaturedDestinations() {
 
                 {/* Location Badge */}
                 <div className="absolute top-4 left-4 flex items-center gap-1.5 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full">
-                  <MapPin className="h-3.5 w-3.5 text-primary" />
+                  <Icon name="MapPin" size={14} className="text-primary" />
                   <span className="text-xs font-medium">{destination.country}</span>
                 </div>
               </div>
@@ -91,12 +93,9 @@ export function FeaturedDestinations() {
                   <p className="text-sm text-muted-foreground leading-relaxed">{destination.description}</p>
                 </div>
 
-                <div className="flex items-center justify-between pt-4 border-t border-border">
-                  <span className="text-sm font-semibold text-primary">{destination.price}</span>
-                  <Button variant="ghost" size="sm" className="group/btn text-foreground hover:text-primary">
-                    Подробнее
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </Button>
+                <div className="flex items-start gap-2 pt-4 border-t border-border">
+                  <Icon name="KeyRound" size={14} className="text-primary mt-0.5 shrink-0" />
+                  <span className="text-xs text-primary/80 leading-relaxed italic">{destination.secret}</span>
                 </div>
               </div>
             </Card>
@@ -105,8 +104,8 @@ export function FeaturedDestinations() {
 
         {/* View All Button */}
         <div className="text-center mt-16">
-          <Button variant="outline" size="lg" className="rounded-full px-8 border-2 bg-transparent">
-            Все направления
+          <Button variant="outline" size="lg" className="rounded-full px-8 border-2 bg-transparent tracking-wide">
+            Получить полный лид-магнит
           </Button>
         </div>
       </div>
