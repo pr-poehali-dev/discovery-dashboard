@@ -1,0 +1,32 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS CORS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Сохранение заявки",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Иван Тест",
+        "contact": "ivan@example.com",
+        "archetype": "Драйвер",
+        "energy": "high",
+        "temper": "extra"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {"success": true},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Валидация пустых полей",
+      "method": "POST",
+      "path": "/",
+      "body": {"name": "", "contact": ""},
+      "expectedStatus": 400
+    }
+  ]
+}
