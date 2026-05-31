@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import Icon from "@/components/ui/icon"
+import { useQuiz } from "@/components/QuizContext"
 
 export function Navbar() {
+  const { openQuiz } = useQuiz()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -54,7 +56,7 @@ export function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6 tracking-wide">
+            <Button onClick={openQuiz} className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6 tracking-wide">
               Получить план
             </Button>
           </div>
@@ -82,7 +84,7 @@ export function Navbar() {
             <a href="#contact" className="block text-base font-medium text-foreground/70 hover:text-foreground">
               Контакты
             </a>
-            <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full">
+            <Button onClick={() => { setIsMobileMenuOpen(false); openQuiz() }} className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full">
               Получить план
             </Button>
           </div>

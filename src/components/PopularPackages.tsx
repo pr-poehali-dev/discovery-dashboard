@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Icon from "@/components/ui/icon"
+import { useQuiz } from "@/components/QuizContext"
 
 const packages = [
   {
@@ -42,6 +43,7 @@ const packages = [
 ]
 
 export function PopularPackages() {
+  const { openQuiz } = useQuiz()
   return (
     <section id="packages" className="py-32 bg-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -119,7 +121,7 @@ export function PopularPackages() {
                     <div className="text-xs text-muted-foreground mb-1">Стоимость плана</div>
                     <div className="text-2xl font-semibold text-primary">{pkg.price}</div>
                   </div>
-                  <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full tracking-wide">
+                  <Button onClick={openQuiz} className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full tracking-wide">
                     Хочу план
                   </Button>
                 </div>

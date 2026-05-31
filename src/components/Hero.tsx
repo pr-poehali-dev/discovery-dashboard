@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button"
 import Icon from "@/components/ui/icon"
+import { useQuiz } from "@/components/QuizContext"
 
 export function Hero() {
+  const { openQuiz } = useQuiz()
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-muted/30 to-background">
       {/* Background Image */}
@@ -32,12 +34,18 @@ export function Hero() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
             <Button
               size="lg"
+              onClick={openQuiz}
               className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 h-14 text-base group tracking-wide"
             >
               Узнать свой архетип
               <Icon name="ArrowRight" size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button size="lg" variant="outline" className="rounded-full px-8 h-14 text-base border-2 bg-transparent tracking-wide">
+            <Button
+              size="lg"
+              variant="outline"
+              className="rounded-full px-8 h-14 text-base border-2 bg-transparent tracking-wide"
+              onClick={() => document.getElementById("destinations")?.scrollIntoView({ behavior: "smooth" })}
+            >
               Скрытые локации
             </Button>
           </div>
